@@ -1,13 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-import Product from "./Product";
+import "./App.css";
+import React from "react";
+import MultipleCounter from "./MultipleCounter";
 
 function App() {
-  return (
-    <div className="App">
-     <Product></Product>
-    </div>
-  );
+    return (
+        <div className="App">
+            <MultipleCounter />
+        </div>
+    );
 }
 
 export default App;
