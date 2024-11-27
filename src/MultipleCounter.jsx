@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from "react";
+import CounterGroup from "./CounterGroup";
 
 const MultipleCounter = () => {
     const initialSize = 0;
     const [size, setSize] = useState(initialSize);
+
     const handleSizeChange = (event) => {
         let newSize = parseInt(event.target.value, 10);
 
@@ -11,6 +13,7 @@ const MultipleCounter = () => {
 
         setSize(newSize);
     };
+
     const handleReset = () => {
         setSize(initialSize);
     };
@@ -32,50 +35,5 @@ const MultipleCounter = () => {
         </div>
     );
 };
-
-const CounterGroup = ({ size }) => {
-    const [counters, setCounters] = useState([]);
-
-    useEffect(() => {
-        setCounters(Array(size).fill(0));
-    }, [size]);
-
-    const increment = (index) => {
-        const newCounters = [...counters];
-        newCounters[index]++;
-        setCounters(newCounters);
-    };
-
-    const decrement = (index) => {
-        const newCounters = [...counters];
-        newCounters[index]--;
-        setCounters(newCounters);
-    };
-    const sum = counters.reduce((acc, curr) => acc + curr, 0);
-
-    return (
-        <div className="counter-group">
-            <div className="sum">
-                <p>Total Sum: {sum}</p>
-            </div>
-            {counters.map((value, index) => (
-                <Counter
-                    key={index}
-                    value={value}
-                    onIncrement={() => increment(index)}
-                    onDecrement={() => decrement(index)}
-                />
-            ))}
-        </div>
-    );
-};
-
-const Counter = ({ onIncrement, onDecrement, value }) => (
-    <div className="counter">
-        <button onClick={onDecrement}>-</button>
-        <span>{value}</span>
-        <button onClick={onIncrement}>+</button>
-    </div>
-);
 
 export default MultipleCounter;
