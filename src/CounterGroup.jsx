@@ -1,11 +1,14 @@
 import Counter from "./Counter";
-import {useState} from "react";
+import { useState, useEffect } from "react";
 
-const CounterGroup = ({ size, onReset }) => {
-    const [counters, setCounters] = useState(Array(size).fill(0));
+const CounterGroup = ({ size }) => {
+    const [counters, setCounters] = useState([]);
 
-    const increment = (index) => {
-        const newCounters = [...counters];
+    useEffect(() => {
+        setCounters(Array(size).fill(0));
+    }, [size]);
+
+    const increment = (index) =>Counters = [...counters];
         newCounters[index]++;
         setCounters(newCounters);
     };
@@ -39,4 +42,5 @@ const CounterGroup = ({ size, onReset }) => {
         </div>
     );
 };
+
 export default CounterGroup;
